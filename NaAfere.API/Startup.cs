@@ -34,7 +34,6 @@ namespace NaAfere.API
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -45,14 +44,21 @@ namespace NaAfere.API
 
             IdentityBuilder builder = services.AddIdentityCore<User>(opt =>
             {
+                opt.SignIn.RequireConfirmedEmail = true;
+
                 opt.Password.RequiredLength = 7;
+
                 opt.User.RequireUniqueEmail = true;
             });
 
             builder = new IdentityBuilder(builder.UserType, typeof(Role), builder.Services);
-            builder.AddEntityFrameworkStores<DataContext>();
+            //telling Identity that we want to use EntityFramework as a store - adds user classes into database
+            builder.AddEntityFrameworkStores<DataContext>(); 
+            //Check the roles
             builder.AddRoleValidator<RoleValidator<Role>>();
+            //Create and remove roles
             builder.AddRoleManager<RoleManager<Role>>();
+            //login users when they provide email and password
             builder.AddSignInManager<SignInManager<User>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -70,8 +76,6 @@ namespace NaAfere.API
             services.AddAuthorization(options => 
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-                options.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "Moderator"));
-                // options.AddPolicy("VipOnly", policy => policy.RequireRole("VIP"));
             });
 
             // because of this options we do not have to write [Authorization] above controllers. Each request will be validated.
@@ -84,6 +88,8 @@ namespace NaAfere.API
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
+            services.AddTransient<SeedU>();
+            services.AddTransient<SeedR>();
             services.AddAutoMapper();
             //we will be injecting IAuthRepository inside our controllers, and than gets implementation from AuthRepository
             services.AddScoped<IAuthRepository, AuthRepository>();
@@ -91,7 +97,7 @@ namespace NaAfere.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedU seederU, SeedR seederR)
         {
             if (env.IsDevelopment())
             {
@@ -115,7 +121,10 @@ namespace NaAfere.API
             }
 
             //app.UseHttpsRedirection();
-            seeder.SeedUsers();
+            seederU.SeedUsers();
+            seederR.SeedLocations();
+            seederR.SeedTeams();
+            seederR.SeedDisciplines();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();

@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 
 namespace NaAfere.API.Data
 {
-    public class Seed
+    public class SeedU
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
-        public Seed(UserManager<User> userManager, RoleManager<Role> roleManager)
+        public SeedU(UserManager<User> userManager, RoleManager<Role> roleManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -28,8 +28,6 @@ namespace NaAfere.API.Data
                     new Role{Name = "Member"},
                     new Role{Name = "Admin"},
                     new Role{Name = "Moderator"},
-                    new Role{Name = "TeamOwner"},
-                    new Role{Name = "GameOwner"},
                 };
 
                 foreach (var role in roles)
@@ -40,13 +38,13 @@ namespace NaAfere.API.Data
                 foreach (var user in users)
                 {
                     // user.Photos.SingleOrDefault().IsApproved = true;
-                    _userManager.CreateAsync(user, "Pass.word666").Wait();
+                    _userManager.CreateAsync(user, "Pass.word156").Wait();
                     _userManager.AddToRoleAsync(user, "Member").Wait();
                 }
 
                 var adminUser = new User
                 {
-                    Email = "admin@admin.pl"
+                    Email = "rezi610@gmail.com"
                 };
 
                 IdentityResult result = _userManager.CreateAsync(adminUser, "Pass.word666").Result;
@@ -54,7 +52,7 @@ namespace NaAfere.API.Data
                 if (result.Succeeded)
                 {
                     var admin = _userManager.FindByNameAsync("Admin").Result;
-                    _userManager.AddToRolesAsync(admin, new[] {"Admin", "Moderator"}).Wait();
+                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" }).Wait();
                 }
             }
         }

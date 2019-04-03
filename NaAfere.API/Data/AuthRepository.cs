@@ -21,10 +21,10 @@ namespace NaAfere.API.Data
 
         public async Task<User> Login(string email, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email); //pamietac o include foto
 
-            if (user == null)
-                return null;
+            //if (user == null)
+            //    return null;
 
             return user;
         }

@@ -1,0 +1,97 @@
+[
+  {
+    "Name": "Acrodance",
+    "Description": "Cupidatat ex aliqua id non exercitation et sit et.",
+    "City": "Calverton",
+    "Country": "Mali",
+    "Address": "Atkins Avenue 87",
+    "ZipCode": "90-859",
+    "Latitude": 6.640773,
+    "Longitude": -10.489071,
+    "PhoneNumber": "(+48)820573243",
+    "Email": "acrodance@gmail.com",
+    "Website": "www.acrodance.com",
+    "CreateDate": "2019-07-07",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=562",
+      "Type": "Location",
+      "SendDate": "2019-08-18"
+    }
+  },
+  {
+    "Name": "Enthaze",
+    "Description": "Eu minim sit non adipisicing sunt eiusmod.",
+    "City": "Harold",
+    "Country": "Japan",
+    "Address": "Richards Street 86",
+    "ZipCode": "98-442",
+    "Latitude": 31.844261,
+    "Longitude": -169.394579,
+    "PhoneNumber": "(+48)816560271",
+    "Email": "enthaze@gmail.com",
+    "Website": "www.enthaze.com",
+    "CreateDate": "2019-03-26",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=267",
+      "Type": "Location",
+      "SendDate": "2019-05-09"
+    }
+  },
+  {
+    "Name": "Mixers",
+    "Description": "Incididunt enim commodo amet cillum velit incididunt.",
+    "City": "Franklin",
+    "Country": "Slovak Republic",
+    "Address": "Ridgewood Place 77",
+    "ZipCode": "88-444",
+    "Latitude": 40.119493,
+    "Longitude": -99.803457,
+    "PhoneNumber": "(+48)989472364",
+    "Email": "mixers@gmail.com",
+    "Website": "www.mixers.com",
+    "CreateDate": "2019-06-08",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=92",
+      "Type": "Location",
+      "SendDate": "2019-07-10"
+    }
+  },
+  {
+    "Name": "Zentry",
+    "Description": "Tempor exercitation non Lorem officia eiusmod nostrud proident Lorem voluptate dolore reprehenderit.",
+    "City": "Fannett",
+    "Country": "Netherlands Antilles",
+    "Address": "Morgan Avenue 79",
+    "ZipCode": "85-945",
+    "Latitude": -34.589846,
+    "Longitude": -20.375588,
+    "PhoneNumber": "(+48)835458218",
+    "Email": "zentry@gmail.com",
+    "Website": "www.zentry.com",
+    "CreateDate": "2019-05-02",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=611",
+      "Type": "Location",
+      "SendDate": "2019-05-09"
+    }
+  },
+  {
+    "Name": "Evidends",
+    "Description": "Voluptate proident deserunt adipisicing adipisicing amet et mollit aute minim eiusmod sint fugiat magna esse.",
+    "City": "Carlton",
+    "Country": "Latvia",
+    "Address": "Jaffray Street 75",
+    "ZipCode": "93-342",
+    "Latitude": 17.078585,
+    "Longitude": -106.998701,
+    "PhoneNumber": "(+48)815441350",
+    "Email": "evidends@gmail.com",
+    "Website": "www.evidends.com",
+    "CreateDate": "2019-07-12",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=817",
+      "Type": "Location",
+      "SendDate": "2019-03-03"
+    }
+  }
+]

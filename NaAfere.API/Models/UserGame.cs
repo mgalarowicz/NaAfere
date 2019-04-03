@@ -1,11 +1,14 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NaAfere.API.Models
 {
     public class UserGame
     {
-        public int Id { get; set; }
         public bool IsHost { get; set; }
+        public bool OnWaitlist { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime JoinTime { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }

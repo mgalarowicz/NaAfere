@@ -1,10 +1,11 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NaAfere.API.Models
 {
     public class UserTeam
     {
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime JoinDate { get; set; }
         public bool isHost { get; set; }
         public int UserId { get; set; }

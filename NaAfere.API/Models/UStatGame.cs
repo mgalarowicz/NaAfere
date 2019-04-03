@@ -1,10 +1,9 @@
 namespace NaAfere.API.Models
 {
-    public class UStatsGame
+    public class UStatGame
     {
-        public int Id { get; set; }
         public int UStatsId { get; set; }
-        public UStats UStats { get; set; }
+        public UStat UStat { get; set; }
         public int GameId { get; set; }
         public Game Game { get; set; }
     }
