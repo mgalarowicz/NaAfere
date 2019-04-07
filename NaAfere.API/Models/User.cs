@@ -15,14 +15,8 @@ namespace NaAfere.API.Models
         public string Country { get; set; }
         public DateTime LastActive { get; set; } 
 
-    //     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    // {
-    //     modelBuilder.Entity<Blog>()
-    //         .Property(b => b.Created)
-    //         .HasDefaultValueSql("getdate()");
-    // }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]     
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; } = DateTime.UtcNow;
 
         // [InverseProperty("Sender")]      
         public ICollection<Message> MessageSent { get; set; }

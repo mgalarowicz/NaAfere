@@ -47,7 +47,7 @@ namespace NaAfere.API.Data
                     Email = "rezi610@gmail.com"
                 };
 
-                IdentityResult result = _userManager.CreateAsync(adminUser, "Pass.word666").Result;
+                IdentityResult result = _userManager.CreateAsync(adminUser, "Pass.word156").Result;
 
                 if (result.Succeeded)
                 {

@@ -1,5 +1,7 @@
 using System.Linq;
 using AutoMapper;
+using NaAfere.API.Dtos;
+using NaAfere.API.Models;
 
 namespace NaAfere.API.Helpers
 {
@@ -7,32 +9,33 @@ namespace NaAfere.API.Helpers
     {
         public AutoMapperProfiles()
         {
-            // CreateMap<User, UserForListDto>()
-            //     .ForMember(dest => dest.PhotoUrl, opt => {
-            //         opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
-            //     })
-            //     .ForMember(dest => dest.Age, opt => {
-            //         opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
-            //     });
-            // CreateMap<User, UserForDetailedDto>()
-            //     .ForMember(dest => dest.PhotoUrl, opt => {
-            //         opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
-            //     })
-            //     .ForMember(dest => dest.Age, opt => {
-            //         opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
-            //     });
-            // CreateMap<Photo, PhotosForDetailedDto>();
-            // CreateMap<UserForUpdateDto, User>();           //wychodzimy z UserForUpdateDto i celujemy w User
-            // CreateMap<Photo, PhotoForReturnDto>();
-            // CreateMap<PhotoForReturnDto, Photo>();
-            // CreateMap<PhotoForCreationDto, Photo>();
-            // CreateMap<UserForRegisterDto, User>();
-            // CreateMap<MessageForCreationDto, Message>().ReverseMap();
-            // CreateMap<Message, MessageToReturnDto>()
-            //     .ForMember(m => m.SenderPhotoUrl, opt => opt
-            //         .MapFrom(u => u.Sender.Photos.FirstOrDefault(p => p.IsMain).Url))
-            //     .ForMember(m => m.RecipientPhotoUrl, opt => opt
-            //         .MapFrom(u => u.Recipient.Photos.FirstOrDefault(p => p.IsMain).Url));
+            CreateMap<User, UserForListDto>()
+                .ForMember(dest => dest.PhotoUrl, opt => {
+                    opt.MapFrom(src => src.Photo.Url);
+                })
+                .ForMember(dest => dest.Age, opt => {
+                    opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
+                });
+            CreateMap<User, UserForDetailedDto>()
+                .ForMember(dest => dest.PhotoUrl, opt => {
+                    opt.MapFrom(src => src.Photo.Url);
+                })
+                .ForMember(dest => dest.Age, opt => {
+                    opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
+                });
+
+            CreateMap<UserForRegisterDto, User>();
+            
+            CreateMap<UStat, UStatForDetailedDto>();
+
+            CreateMap<Team, TeamForListDto>()
+                .ForMember(dest => dest.PhotoUrl, opt => {
+                    opt.MapFrom(src => src.Photo.Url);
+                });
+            CreateMap<Team, TeamForDetailedDto>()
+                .ForMember(dest => dest.PhotoUrl, opt => {
+                    opt.MapFrom(src => src.Photo.Url);
+                });
         }
     }
 }

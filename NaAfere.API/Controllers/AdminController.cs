@@ -17,7 +17,7 @@ namespace NaAfere.API.Controllers
             _context = context;
         }
 
-        [Authorize(Policy = "RequiredAdminRole")]
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpGet("onlyForAdmin")]
         public async Task<IActionResult> GetUsersWithRoles()
         {

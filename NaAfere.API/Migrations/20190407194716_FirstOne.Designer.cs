@@ -9,7 +9,7 @@ using NaAfere.API.Data;
 namespace NaAfere.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190401202513_FirstOne")]
+    [Migration("20190407194716_FirstOne")]
     partial class FirstOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

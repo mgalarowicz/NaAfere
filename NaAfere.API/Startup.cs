@@ -44,7 +44,7 @@ namespace NaAfere.API
 
             IdentityBuilder builder = services.AddIdentityCore<User>(opt =>
             {
-                opt.SignIn.RequireConfirmedEmail = true;
+                // opt.SignIn.RequireConfirmedEmail = true;
 
                 opt.Password.RequiredLength = 7;
 
@@ -68,8 +68,8 @@ namespace NaAfere.API
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
                             .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateIssuer = false, //ustawione bo nasz client to localhost ale zmienic ewentualnie
+                        ValidateAudience = false //to tak samo
                     };
                 });
 
@@ -86,13 +86,16 @@ namespace NaAfere.API
                         .Build();
                     options.Filters.Add(new AuthorizeFilter(policy));
                 })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(opt => {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
             services.AddCors();
+            services.AddAutoMapper();
             services.AddTransient<SeedU>();
             services.AddTransient<SeedR>();
             services.AddAutoMapper();
-            //we will be injecting IAuthRepository inside our controllers, and than gets implementation from AuthRepository
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<INaAfereRepository, NaAfereRepository>();
             
         }
 
