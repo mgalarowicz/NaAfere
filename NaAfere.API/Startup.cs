@@ -44,9 +44,8 @@ namespace NaAfere.API
 
             IdentityBuilder builder = services.AddIdentityCore<User>(opt =>
             {
-                // opt.SignIn.RequireConfirmedEmail = true;
-
                 opt.Password.RequiredLength = 7;
+                opt.Password.RequireNonAlphanumeric = false;
 
                 opt.User.RequireUniqueEmail = true;
             });
@@ -90,6 +89,8 @@ namespace NaAfere.API
                 .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
+            
+            // services.BuildServiceProvider().GetService<DataContext>().Database.Migrate();
             services.AddCors();
             services.AddAutoMapper();
             services.AddTransient<SeedU>();
@@ -130,7 +131,16 @@ namespace NaAfere.API
             seederR.SeedDisciplines();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseDefaultFiles();   //It will be looking for a index.html in wwwroot
+            app.UseStaticFiles();   //Helps to serve static files from wwwroot
+            // Here I'm telling my API which roots are gonna be handle by Angular
+            // In other words - what should ASP NET CORE do when it do not know the root
+            app.UseMvc(routes => {
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Fallback", action = "Index"}
+                );
+            });
         }
     }
 }

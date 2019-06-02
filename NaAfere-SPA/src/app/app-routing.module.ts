@@ -7,15 +7,29 @@ import { CrewComponent } from './crew/crew.component';
 import { GamesComponent } from './games/games.component';
 import { RegistComponent } from './regist/regist.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'games', component: GamesComponent},
-  {path: 'crew', component: CrewComponent},
-  {path: 'talk', component: TalkComponent},
-  {path: 'teams', component: TeamsComponent},
-  {path: 'register', component: RegistComponent},
   {path: '', component: LoginComponent},
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      {path: 'home', component: HomeComponent},
+      {path: 'games', component: GamesComponent},
+      {path: 'crew', component: CrewComponent},
+      {path: 'talk', component: TalkComponent},
+      {path: 'teams', component: TeamsComponent}
+    ]
+  },
+  // {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  // {path: 'games', component: GamesComponent, canActivate: [AuthGuard]},
+  // {path: 'crew', component: CrewComponent, canActivate: [AuthGuard]},
+  // {path: 'talk', component: TalkComponent, canActivate: [AuthGuard]},
+  // {path: 'teams', component: TeamsComponent, canActivate: [AuthGuard]},
+  {path: 'register', component: RegistComponent},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

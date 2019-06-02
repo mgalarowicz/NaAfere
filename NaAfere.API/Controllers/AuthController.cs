@@ -87,7 +87,7 @@ namespace NaAfere.API.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                //new Claim(ClaimTypes.Name, user.LastName)
+                new Claim(ClaimTypes.Name, string.Concat(user.FirstName," ",user.LastName))
             };
 
             var roles = await _userManager.GetRolesAsync(user);

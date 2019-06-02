@@ -16,7 +16,7 @@ namespace NaAfere.API.Models
         public DateTime LastActive { get; set; } 
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]     
-        public DateTime CreateDate { get; set; } = DateTime.UtcNow;
+        public DateTime CreateDate { get; set; }
 
         // [InverseProperty("Sender")]      
         public ICollection<Message> MessageSent { get; set; }

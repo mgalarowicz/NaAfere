@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,22 +11,24 @@ import { AuthService } from '../_services/auth.service';
 export class LoginComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
   }
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      console.log('login success!');
+      this.alertify.success('login success!');
     },
-      error => {console.log(error);
-    });
+      error => {
+        this.alertify.error(error);
+    }, () => {this.router.navigate(['/games']);
+  });
   }
 
   checkToken() {
-    const token = localStorage.getItem('token');
-    return !!token;  // if token is not empty because of !! it will return true, otherwise it will return false
+    return this.authService.loggedIn();
+    // return !!token;  // if token is not empty because of !! it will return true, otherwise it will return false
   }
 
 }

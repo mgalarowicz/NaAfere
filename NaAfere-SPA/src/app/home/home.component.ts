@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AlertifyService } from '../_services/alertify.service';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
 
   logout() {
     localStorage.removeItem('token');
-    console.log('loged out');
+    this.alertify.message('loged out');
   }
 
   checkToken() {
