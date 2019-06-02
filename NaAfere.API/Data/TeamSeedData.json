@@ -1,0 +1,112 @@
+[
+  {
+    "Name": "Uniworld",
+    "Description": "Culpa quis aute nisi dolor ullamco tempor consectetur occaecat laborum aliquip.",
+    "City": "Whitehaven",
+    "Country": "New Zealand",
+    "PhoneNumber": "(+48)816566218",
+    "Email": "uniworld@gmail.com",
+    "Website": "www.uniworld.com",
+    "CreateDate": "2019-07-21",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=402",
+      "Type": "Team",
+      "SendDate": "2019-06-05"
+    },
+    "Events": [
+      {
+        "Subject": "Zentix",
+        "Content": "Sint minim amet ex officia elit laboris labore adipisicing excepteur.",
+        "Date": "2019-07-20"
+      }
+    ]
+  },
+  {
+    "Name": "Enthaze",
+    "Description": "Enim duis commodo aliqua magna proident nulla enim sint amet nisi culpa dolore sit.",
+    "City": "Dante",
+    "Country": "Dominican Republic",
+    "PhoneNumber": "(+48)824509394",
+    "Email": "enthaze@gmail.com",
+    "Website": "www.enthaze.com",
+    "CreateDate": "2019-08-06",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=135",
+      "Type": "Team",
+      "SendDate": "2019-08-17"
+    },
+    "Events": [
+      {
+        "Subject": "Exospeed",
+        "Content": "Eiusmod mollit sint veniam nostrud nostrud sint velit ad consequat incididunt et minim.",
+        "Date": "2019-06-20"
+      }
+    ]
+  },
+  {
+    "Name": "Vurbo",
+    "Description": "Est fugiat reprehenderit elit est cillum mollit deserunt nisi dolor.",
+    "City": "Caledonia",
+    "Country": "Egypt",
+    "PhoneNumber": "(+48)820530334",
+    "Email": "vurbo@gmail.com",
+    "Website": "www.vurbo.com",
+    "CreateDate": "2019-08-20",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=689",
+      "Type": "Team",
+      "SendDate": "2019-02-16"
+    },
+    "Events": [
+      {
+        "Subject": "Jumpstack",
+        "Content": "Tempor incididunt in et id veniam aliqua exercitation.",
+        "Date": "2019-05-18"
+      }
+    ]
+  },
+  {
+    "Name": "Enaut",
+    "Description": "Laborum commodo dolore do veniam excepteur esse commodo id fugiat.",
+    "City": "Moquino",
+    "Country": "Belize",
+    "PhoneNumber": "(+48)973473373",
+    "Email": "enaut@gmail.com",
+    "Website": "www.enaut.com",
+    "CreateDate": "2019-08-23",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=542",
+      "Type": "Team",
+      "SendDate": "2019-01-01"
+    },
+    "Events": [
+      {
+        "Subject": "Essensia",
+        "Content": "Adipisicing veniam id dolor eu aute esse ad.",
+        "Date": "2019-04-01"
+      }
+    ]
+  },
+  {
+    "Name": "Assistia",
+    "Description": "Sint cillum sit esse minim duis do consequat amet.",
+    "City": "Crenshaw",
+    "Country": "Djibouti",
+    "PhoneNumber": "(+48)866537371",
+    "Email": "assistia@gmail.com",
+    "Website": "www.assistia.com",
+    "CreateDate": "2019-06-03",
+    "Photo": {
+      "Url": "https://picsum.photos/200/200/?image=504",
+      "Type": "Team",
+      "SendDate": "2019-08-16"
+    },
+    "Events": [
+      {
+        "Subject": "Animalia",
+        "Content": "Sit esse elit ipsum tempor adipisicing nulla labore duis adipisicing non.",
+        "Date": "2019-08-11"
+      }
+    ]
+  }
+]
