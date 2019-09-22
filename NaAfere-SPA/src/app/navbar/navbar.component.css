@@ -1,0 +1,26 @@
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+    color: black;
+}
+
+nav {
+    background: #2D2E2E;
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #fff;
+    display: block;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.activated {
+    background-color: silver;
+}

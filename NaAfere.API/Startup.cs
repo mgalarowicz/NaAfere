@@ -77,7 +77,7 @@ namespace NaAfere.API
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
             });
 
-            // because of this options we do not have to write [Authorization] above controllers. Each request will be validated.
+            // because of this options we do not have to write [Authorize] above controllers. Each request will be validated.
             services.AddMvc(options => 
                 {
                     var policy = new AuthorizationPolicyBuilder()
@@ -140,7 +140,8 @@ namespace NaAfere.API
                     name: "spa-fallback",
                     defaults: new { controller = "Fallback", action = "Index"}
                 );
-            });
+            }
+            );
         }
     }
 }

@@ -10,25 +10,26 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistComponent } from './regist/regist.component';
 import { AuthService } from './_services/auth.service';
-import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { GamesComponent } from './games/games.component';
-import { CrewComponent } from './crew/crew.component';
-import { TalkComponent } from './talk/talk.component';
+import { MessageComponent } from './message/message.component';
 import { TeamsComponent } from './teams/teams.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
+import { LocationComponent } from './location/location.component';
 
+// we convert a plain typescript class to module from angular point of view
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistComponent,
-    HomeComponent,
+    NavbarComponent,
     GamesComponent,
-    CrewComponent,
-    TalkComponent,
-    TeamsComponent
+    MessageComponent,
+    TeamsComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,

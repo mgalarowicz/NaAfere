@@ -3,17 +3,25 @@
     <a class="navbar-brand">NaAFERE</a>
 
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/games">Games</a>
+      <li>
+          <a routerLink="/games" [class.activated]="currentUrl == '/games'">
+            <i class="material-icons">emoji_events</i>
+          </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/talk">Talk</a>
+      <li>
+          <a routerLink="/message" [class.activated]="currentUrl == '/message'">
+            <i class="material-icons">message</i>
+          </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/crew">Crew</a>
+      <li>
+          <a routerLink="/teams" [class.activated]="currentUrl == '/teams'">
+            <i class="material-icons">supervised_user_circle</i>
+          </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/teams">Teams</a>
+      <li>
+          <a routerLink="/location" [class.activated]="currentUrl == '/location'">
+            <i class="material-icons">gps_fixed</i>
+          </a>
       </li>
     </ul>
 
