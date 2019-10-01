@@ -26,9 +26,8 @@ export class LoginComponent implements OnInit {
   });
   }
 
-  checkToken() {
+  loggedIn() {
     return this.authService.loggedIn();
-    // return !!token;  // if token is not empty because of !! it will return true, otherwise it will return false
   }
 
 }

@@ -18,6 +18,8 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { LocationComponent } from './location/location.component';
+import { MystatsComponent } from './mystats/mystats.component';
+import { HomeComponent } from './home/home.component';
 
 // we convert a plain typescript class to module from angular point of view
 @NgModule({
@@ -29,7 +31,9 @@ import { LocationComponent } from './location/location.component';
     GamesComponent,
     MessageComponent,
     TeamsComponent,
-    LocationComponent
+    LocationComponent,
+    MystatsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -22,11 +22,12 @@ export class NavbarComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.alertify.message('loged out');
+    this.authService.decodedToken = null;
+    this.router.navigate(['/']);
   }
 
-  checkToken() {
-    const token = localStorage.getItem('token');
-    return !!token;  // if token is not empty because of !! it will return true, otherwise it will return false
+  loggedIn() {
+    return this.authService.loggedIn();
   }
 
 }

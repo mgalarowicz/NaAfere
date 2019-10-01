@@ -7,9 +7,11 @@ import { LocationComponent } from './location/location.component';
 import { RegistComponent } from './regist/regist.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { MystatsComponent } from './mystats/mystats.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: HomeComponent},
   {
     path: '',
     runGuardsAndResolvers: 'always',
@@ -18,11 +20,14 @@ const routes: Routes = [
       {path: 'games', component: GamesComponent},
       {path: 'message', component: MessageComponent},
       {path: 'teams', component: TeamsComponent},
-      {path: 'location', component: LocationComponent}
+      {path: 'location', component: LocationComponent},
+      {path: 'mystats', component: MystatsComponent}
     ]
   },
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistComponent},
-  {path: '**', redirectTo: 'games', pathMatch: 'full'}
+  {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

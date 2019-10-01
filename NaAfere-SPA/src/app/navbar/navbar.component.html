@@ -1,8 +1,8 @@
-<nav *ngIf="checkToken()" class="navbar navbar-expand-md navbar-dark bg-dark">
-  <!-- <div class="container"> -->
-    <a class="navbar-brand">NaAFERE</a>
 
-    <ul class="navbar-nav mr-auto">
+<nav class="navbar navbar-expand md navbar-dark bg-dark">
+  <!-- <div class="container"> -->
+    <a class="navbar-brand" routerLink="/home">NaAFERE</a>
+    <ul class="navbar-nav mr-auto" *ngIf="loggedIn()" >
       <li>
           <a routerLink="/games" [class.activated]="currentUrl == '/games'">
             <i class="material-icons">emoji_events</i>
@@ -23,9 +23,21 @@
             <i class="material-icons">gps_fixed</i>
           </a>
       </li>
+      <li>
+        <a routerLink="/mystats" [class.activated]="currentUrl == '/mystats'">
+          <i class="material-icons">timeline</i>
+          <!-- <i class="material-icons">equalizer</i> -->
+          <!-- <i class="material-icons">signal_cellular_alt</i> -->
+        </a>
+    </li>
+    <!-- <li>
+      <a routerLink="/home" [class.activated]="currentUrl == '/home'">
+        <i class="material-icons">home</i>
+      </a>
+  </li> -->
     </ul>
 
-    <div class="dropdown" dropdown>
+    <div class="dropdown" *ngIf="loggedIn()" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>
         {{authService.decodedToken?.unique_name | titlecase}}
       </a>
@@ -35,6 +47,11 @@
         <a class="dropdown-item" routerLink="" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
       </div>
     </div>
+
+    <ul *ngIf="!loggedIn()" class="navbar-nav ml-auto">
+      <a class="btn btn-outline-secondary" routerLink="/login">Login</a>
+      <a class="btn btn-outline-secondary" routerLink="/register">Register</a>
+    </ul>
   <!-- </div> -->
 </nav>
 
