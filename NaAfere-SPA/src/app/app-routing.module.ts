@@ -3,12 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { TeamsComponent } from './teams/teams.component';
 import { MessageComponent } from './message/message.component';
 import { GamesComponent } from './games/games.component';
-import { LocationComponent } from './location/location.component';
+import { LocationListComponent } from './locations/location-list/location-list.component';
 import { RegistComponent } from './regist/regist.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { MystatsComponent } from './mystats/mystats.component';
 import { HomeComponent } from './home/home.component';
+import { LocationDetailComponent } from './locations/location-detail/location-detail.component';
+import { LocationDetailResolver } from './_resolvers/location-detail.resolver';
+import { LocationListResolver } from './_resolvers/location-list.resolver';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserListResolver } from './_resolvers/user-list.resolver';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,7 +25,9 @@ const routes: Routes = [
       {path: 'games', component: GamesComponent},
       {path: 'message', component: MessageComponent},
       {path: 'teams', component: TeamsComponent},
-      {path: 'location', component: LocationComponent},
+      {path: 'locations', component: LocationListComponent, resolve: {locations: LocationListResolver}},
+      {path: 'locations/:id', component: LocationDetailComponent, resolve: {location: LocationDetailResolver}},
+      {path: 'users', component: UserListComponent, resolve: {users: UserListResolver}},
       {path: 'mystats', component: MystatsComponent}
     ]
   },

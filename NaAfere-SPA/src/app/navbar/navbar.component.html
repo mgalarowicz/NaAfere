@@ -19,22 +19,20 @@
           </a>
       </li>
       <li>
-          <a routerLink="/location" [class.activated]="currentUrl == '/location'">
+          <a routerLink="/users" [class.activated]="currentUrl == '/users'">
+            <i class="material-icons">accessibility_new</i>
+          </a>
+      </li>
+      <li>
+          <a routerLink="/locations" [class.activated]="currentUrl == '/locations'">
             <i class="material-icons">gps_fixed</i>
           </a>
       </li>
       <li>
         <a routerLink="/mystats" [class.activated]="currentUrl == '/mystats'">
           <i class="material-icons">timeline</i>
-          <!-- <i class="material-icons">equalizer</i> -->
-          <!-- <i class="material-icons">signal_cellular_alt</i> -->
         </a>
     </li>
-    <!-- <li>
-      <a routerLink="/home" [class.activated]="currentUrl == '/home'">
-        <i class="material-icons">home</i>
-      </a>
-  </li> -->
     </ul>
 
     <div class="dropdown" *ngIf="loggedIn()" dropdown>

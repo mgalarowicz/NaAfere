@@ -49,7 +49,7 @@ namespace NaAfere.API.Controllers
 
             if (result.Succeeded)
             {
-                return CreatedAtRoute("GetUser", new { controller = "Users", id = userToCreate.Id }, userToReturn);
+                return CreatedAtRoute("GetUserById", new { controller = "Users", id = userToCreate.Id }, userToReturn);
             }
 
             return BadRequest(result.Errors);

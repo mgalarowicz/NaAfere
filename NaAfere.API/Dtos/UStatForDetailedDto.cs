@@ -1,8 +1,9 @@
 using System;
+using NaAfere.API.Helpers;
 
 namespace NaAfere.API.Dtos
 {
-    public class UStatForDetailedDto
+    public class UStatForDetailedDto : IEntity
     {
         public int Id { get; set; }
         public int FootballGames { get; set; }

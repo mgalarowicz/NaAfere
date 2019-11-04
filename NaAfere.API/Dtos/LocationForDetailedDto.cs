@@ -1,11 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 using NaAfere.API.Helpers;
 
-namespace NaAfere.API.Models
+namespace NaAfere.API.Dtos
 {
-    public class Location : IEntity
+    public class LocationForDetailedDto : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -19,10 +20,6 @@ namespace NaAfere.API.Models
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
-        
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime CreateDate { get; set; }
-        public Photo Photo { get; set; }
-        public ICollection<Game> LocationGames { get; set; }
+        public string PhotoUrl {get; set;}
     }
 }

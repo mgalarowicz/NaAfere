@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{location.photoUrl}}" alt="{{location.name}}">
+        <div class="card-body">
+          <div>
+            <strong><b>Contact:</b></strong>
+            <p>{{location.email}}</p>
+            <p>{{location.phoneNumber}}</p>
+            <p>{{location.website}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <strong><b>Adress:</b></strong>
+            <p>{{location.address}}</p>
+            <p>{{location.zipcode}},{{location.city}}</p>
+            <p>{{location.country}}</p>
+          </div>
+          <div id="map" class="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

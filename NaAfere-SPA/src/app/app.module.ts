@@ -17,40 +17,58 @@ import { TeamsComponent } from './teams/teams.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
-import { LocationComponent } from './location/location.component';
+import { LocationListComponent } from './locations/location-list/location-list.component';
 import { MystatsComponent } from './mystats/mystats.component';
 import { HomeComponent } from './home/home.component';
+import { LocationDetailComponent } from './locations/location-detail/location-detail.component';
+import { LocationListResolver } from './_resolvers/location-list.resolver';
+import { LocationDetailResolver } from './_resolvers/location-detail.resolver';
+import { LocationService } from './_services/location.service';
+import { LocationCardComponent } from './locations/location-card/location-card.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserListResolver } from './_resolvers/user-list.resolver';
+import { UserService } from './_services/user.service';
 
 // we convert a plain typescript class to module from angular point of view
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegistComponent,
-    NavbarComponent,
-    GamesComponent,
-    MessageComponent,
-    TeamsComponent,
-    LocationComponent,
-    MystatsComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    ShowHidePasswordModule
-  ],
-  providers: [
-    AuthService,
-    ErrorInterceptorProvider,
-    AlertifyService,
-    AuthGuard
-  ],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      LoginComponent,
+      RegistComponent,
+      NavbarComponent,
+      GamesComponent,
+      MessageComponent,
+      TeamsComponent,
+      LocationListComponent,
+      LocationDetailComponent,
+      LocationCardComponent,
+      MystatsComponent,
+      HomeComponent,
+      UserListComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
+      BsDropdownModule.forRoot(),
+      BsDatepickerModule.forRoot(),
+      ShowHidePasswordModule
+   ],
+   providers: [
+      AuthService,
+      ErrorInterceptorProvider,
+      AlertifyService,
+      AuthGuard,
+      LocationListResolver,
+      LocationDetailResolver,
+      LocationService,
+      UserListResolver,
+      UserService
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

@@ -6,8 +6,10 @@ export interface User {
     lastName: string;
     gender: string;
     age: number;
+    email: string;
     city: string;
     country: string;
     lastActive: Date;
     createDate: Date;
+    photoUrl: string;
 }

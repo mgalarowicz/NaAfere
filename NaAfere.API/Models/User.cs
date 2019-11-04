@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using NaAfere.API.Helpers;
 
 namespace NaAfere.API.Models
 {
-    public class User : IdentityUser<int>
+    public class User : IdentityUser<int>, IEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

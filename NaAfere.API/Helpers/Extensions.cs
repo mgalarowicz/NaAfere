@@ -20,5 +20,10 @@ namespace NaAfere.API.Helpers
             
             return age;
         }
+
+        public static bool IsObjectNull(this IEntity entity)
+        {
+            return entity == null;
+        }
     }
 }

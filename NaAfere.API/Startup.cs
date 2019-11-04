@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -11,20 +9,19 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NaAfere.API.Data;
 using NaAfere.API.Helpers;
+using NaAfere.API.Logger;
 using NaAfere.API.Models;
+using NaAfere.API.Repositories;
+using NLog;
 
 namespace NaAfere.API
 {
@@ -32,6 +29,7 @@ namespace NaAfere.API
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
@@ -77,6 +75,8 @@ namespace NaAfere.API
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
             });
 
+            services.AddSingleton<ILoggerManager, LoggerManager>();
+
             // because of this options we do not have to write [Authorize] above controllers. Each request will be validated.
             services.AddMvc(options => 
                 {
@@ -89,19 +89,20 @@ namespace NaAfere.API
                 .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
-            
+
             // services.BuildServiceProvider().GetService<DataContext>().Database.Migrate();
             services.AddCors();
+            services.Configure<IISOptions>(options => { });
             services.AddAutoMapper();
             services.AddTransient<SeedU>();
             services.AddTransient<SeedR>();
             services.AddAutoMapper();
-            services.AddScoped<INaAfereRepository, NaAfereRepository>();
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedU seederU, SeedR seederR)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedU seederU, SeedR seederR, ILoggerManager logger)
         {
             if (env.IsDevelopment())
             {
@@ -112,9 +113,11 @@ namespace NaAfere.API
                 app.UseExceptionHandler(builder => {
                     builder.Run(async context => {
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                        context.Response.ContentType = "application/json";
                         var error = context.Features.Get<IExceptionHandlerFeature>();
                         if (error != null)
                         {
+                            logger.LogError($"Something went wrong: {error.Error}");
                             context.Response.AddApplicationError(error.Error.Message);
                             await context.Response.WriteAsync(error.Error.Message);
                         }
