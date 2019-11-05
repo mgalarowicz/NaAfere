@@ -46,9 +46,9 @@ export class LocationDetailComponent implements OnInit {
 
     this.marker.setStyle(new Style({
       image: new Icon(({
-        src: this.location.photoUrl,
+        src: '../assets/marker.png',
         crossOrigin: 'anonymous',
-        scale: 0.05
+        scale: 0.15
       }))
     }));
 

@@ -1,7 +1,9 @@
 
 <nav class="navbar navbar-expand md navbar-dark bg-dark">
   <!-- <div class="container"> -->
-    <a class="navbar-brand" routerLink="/home">NaAFERE</a>
+    <a class="navbar-brand" routerLink="/home">
+      <img src="../assets/logo3.png" alt="naafere" width="40" height="40">Naafere
+    </a>
     <ul class="navbar-nav mr-auto" *ngIf="loggedIn()" >
       <li>
           <a routerLink="/games" [class.activated]="currentUrl == '/games'">

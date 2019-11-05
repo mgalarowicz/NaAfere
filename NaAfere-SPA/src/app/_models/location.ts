@@ -3,7 +3,7 @@ export interface Location {
     name: string;
     description: string;
     address: string;
-    zipcode: string;
+    zipCode: string;
     city: string;
     country: string;
     email: string;
