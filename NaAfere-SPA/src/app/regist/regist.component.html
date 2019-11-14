@@ -1,6 +1,16 @@
 <form *ngIf="!loggedIn()" [formGroup]="registerForm" class="form-signin" (ngSubmit)="register()">
   <img class="center mb-3 mt-2" src="../assets/logoForNow.PNG" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal text-center">Sing up!</h1>
+  <h1 class="h3 mb-4 font-weight-normal text-center">Sing up!</h1>
+
+  <div class="mb-2">
+    <label class="control-label" style="margin-right:20px">Gender:</label>
+    <label class="radio-inline">
+      <input type="radio" class="form-control mr-3" value="male" formControlName="gender">Male
+    </label>
+    <label class="radio-inline ml-3">
+      <input type="radio" class="form-control mr-3" value="female" formControlName="gender">Female
+    </label>
+  </div>
 
   <div class="mb-2">
     <input type="email" id="inputEmail"
@@ -63,15 +73,7 @@
               && registerForm.get('city').touched">Please enter your city where you live</div>
   </div>
 
-  <div class="mb-2">
-    <label class="control-label" style="margin-right:10px">I am a:</label>
-    <label class="radio-inline">
-      <input type="radio" class="form-control mr-3" value="male" formControlName="gender">Male
-    </label>
-    <label class="radio-inline ml-3">
-      <input type="radio" class="form-control mr-3" value="female" formControlName="gender">Female
-    </label>
-  </div>
+  
 
   <div class="mb-2">
     <input type="text" bsDatepicker [bsConfig]="bsConfig" id="inputDateOfBirth"
@@ -82,10 +84,9 @@
   </div>
 
   <div class="mb-2">
-    <label>Nationality: </label>
     <select [ngClass]="{'is-invalid': registerForm.get('country').errors && registerForm.get('country').touched}"
-      class="form-control" formControlName="country">
-      <option value="" selected disabled hidden>-select one-</option>
+      class="form-control" placeholder="Date Of Birth" formControlName="country">
+      <option value="" selected disabled hidden>Nationality</option>
       <option value="afghan">Afghan</option>
       <option value="albanian">Albanian</option>
       <option value="algerian">Algerian</option>
@@ -283,7 +284,7 @@
               && registerForm.get('country').touched">Please choose your nationality</div>
   </div>
 
-  <div class="mb-2">
+  <div class="mb-3">
     <input type="number" id="inputPhoneNumber" class="form-control mb-2" placeholder="Phone Number - optional"
       formControlName="phoneNumber">
   </div>

@@ -28,3 +28,7 @@ p { margin-bottom: 3px; }
   border-radius: 25px;
 }
 
+a {
+  color: darkgray
+}
+

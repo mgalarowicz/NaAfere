@@ -4,8 +4,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BsDropdownModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-
+import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistComponent } from './regist/regist.component';
@@ -28,6 +30,14 @@ import { LocationCardComponent } from './locations/location-card/location-card.c
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';
 import { UserService } from './_services/user.service';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
+
 
 // we convert a plain typescript class to module from angular point of view
 @NgModule({
@@ -44,7 +54,8 @@ import { UserService } from './_services/user.service';
       LocationCardComponent,
       MystatsComponent,
       HomeComponent,
-      UserListComponent
+      UserListComponent,
+      UserDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -54,7 +65,14 @@ import { UserService } from './_services/user.service';
       ReactiveFormsModule,
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
-      ShowHidePasswordModule
+      ShowHidePasswordModule,
+      JwtModule.forRoot({
+         config: {
+            tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
+         }
+      })
    ],
    providers: [
       AuthService,
@@ -65,7 +83,8 @@ import { UserService } from './_services/user.service';
       LocationDetailResolver,
       LocationService,
       UserListResolver,
-      UserService
+      UserService,
+      UserDetailResolver
    ],
    bootstrap: [
       AppComponent

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NaAfere.API.Data;
+using NaAfere.API.Helpers;
 using NaAfere.API.Models;
 
 namespace NaAfere.API.Repositories
@@ -14,12 +15,13 @@ namespace NaAfere.API.Repositories
         {
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            return await FindAll()
+            var users = FindAll()
                 .OrderBy(u => u.LastName)
-                .Include(p => p.Photo)
-                .ToListAsync();
+                .Include(p => p.Photo);
+
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<User> GetUserById(int id)

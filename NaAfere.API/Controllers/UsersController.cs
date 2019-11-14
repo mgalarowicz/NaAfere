@@ -29,12 +29,14 @@ namespace NaAfere.API.Controllers
         }
 
         [HttpGet(Name = nameof(GetUsers))]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
         {
 
-            var users = await _repo.User.GetUsers();
+            var users = await _repo.User.GetUsers(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
 
             _logger.LogInfo($"Returned all users from database.");
 

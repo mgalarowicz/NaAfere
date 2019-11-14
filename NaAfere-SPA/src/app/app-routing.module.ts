@@ -14,6 +14,8 @@ import { LocationDetailResolver } from './_resolvers/location-detail.resolver';
 import { LocationListResolver } from './_resolvers/location-list.resolver';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -28,6 +30,7 @@ const routes: Routes = [
       {path: 'locations', component: LocationListComponent, resolve: {locations: LocationListResolver}},
       {path: 'locations/:id', component: LocationDetailComponent, resolve: {location: LocationDetailResolver}},
       {path: 'users', component: UserListComponent, resolve: {users: UserListResolver}},
+      {path: 'users/:id', component: UserDetailComponent, resolve: {user: UserDetailResolver}},
       {path: 'mystats', component: MystatsComponent}
     ]
   },

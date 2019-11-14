@@ -1,0 +1,28 @@
+
+.card-body {
+  padding: 12px 12px;
+}
+
+p { margin-bottom: 3px; }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.big {
+  font-size: large;
+}
+
+.table {
+  padding: 3px;
+}
+
+.table thead > tr > th {
+  padding: 8px;
+  font-size: medium;
+}
+
+
+

@@ -14,6 +14,7 @@ namespace NaAfere.API.Data
         public DbSet<Team> Teams {get; set;}
         public DbSet<Location> Locations {get; set;}
         public DbSet<Discipline> Disciplines {get; set;}
+        public DbSet<Message> Messages {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

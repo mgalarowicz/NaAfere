@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <div>
+              <table class="table user-detail">
+                  <thead>
+                    <tr>
+                      <th colspan="2" class="text-center">Games</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td class="text-center">
+                              <p><b>Football:</b></p>
+                              <p><b>Basketball:</b></p>
+                              <p><b>Volleyball:</b></p>
+                              <p><b>Hockey:</b></p>
+                              <p><b>Handball:</b></p>
+                          </td>
+                          <td class="text-center">
+                              <p><b>10</b></p>
+                              <p><b>2</b></p>
+                              <p><b>3</b></p>
+                              <p><b>4</b></p>
+                              <p><b>33</b></p>
+                          </td>
+                        </tr>
+                  </tbody>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.email}}">
+        <div class="card-body">
+          <div>
+            <strong class="big center"><b>{{user.firstName}} {{user.lastName}}</b></strong>
+            <a href="mailto: {{user.email}}"><p>{{user.email}}</p></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">     
+        <div class="card-body">
+            <table class="table user-detail">
+                <thead>
+                  <tr>
+                    <th colspan="2" class="text-center">Personal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+                            <p><strong><b>Gender:</b></strong> {{user.gender}}</p>
+                            <p><strong><b>Age:</b></strong> {{user.age}}</p>
+                            <p><strong><b>Nationality:</b></strong> {{user.country}}</p>
+                            <p><strong><b>City:</b></strong> {{user.city}}</p>
+                            <p><strong><b>Last Active:</b></strong> {{user.lastActive}}</p>
+                        </td>
+                      </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
