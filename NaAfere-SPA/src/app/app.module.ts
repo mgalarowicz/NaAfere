@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BsDropdownModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { BsDropdownModule, BsDatepickerModule, PaginationModule } from 'ngx-bootstrap';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
@@ -65,6 +65,7 @@ export function tokenGetter() {
       ReactiveFormsModule,
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
+      PaginationModule.forRoot(),
       ShowHidePasswordModule,
       JwtModule.forRoot({
          config: {

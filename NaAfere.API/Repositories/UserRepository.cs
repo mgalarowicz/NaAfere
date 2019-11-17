@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,20 @@ namespace NaAfere.API.Repositories
         {
             var users = FindAll()
                 .OrderBy(u => u.LastName)
-                .Include(p => p.Photo);
+                .Include(p => p.Photo).AsQueryable();
+
+            users = users.Where(u => (u.Id != userParams.UserId) && (u.City == userParams.City));
+
+            //users = users.Where(u => u.City == userParams.City);
+
+            if (userParams.MinAge != 10 || userParams.MaxAge != 99)
+            {
+                var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1); 
+                var maxDob = DateTime.Today.AddYears(-userParams.MinAge); 
+            
+                users = users.Where(u => (u.DateOfBirth >= minDob) && (u.DateOfBirth <= maxDob));
+            }
+
 
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }

@@ -31,7 +31,15 @@ namespace NaAfere.API.Controllers
         [HttpGet(Name = nameof(GetUsers))]
         public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
         {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
+            var userFromRepo = await _repo.User.GetUserById(currentUserId);
+
+            userParams.UserId = currentUserId;
+
+            if (String.IsNullOrEmpty(userParams.City))
+                userParams.City = userFromRepo.City;
+            
             var users = await _repo.User.GetUsers(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
