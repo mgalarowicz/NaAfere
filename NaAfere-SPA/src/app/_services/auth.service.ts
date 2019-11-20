@@ -21,9 +21,9 @@ constructor(private http: HttpClient) { }
         const user = response;
         if (user) {
           localStorage.setItem('token', user.token.result);
-          localStorage.setItem('user', JSON.stringify(user.user.result));
+          localStorage.setItem('user', JSON.stringify(user.user));
           this.decodedToken = this.jwtHelper.decodeToken(user.token.result);
-          this.currentUser = user.user.result;
+          this.currentUser = user.user;
           console.log(this.decodedToken);
           console.log(this.currentUser);
         }

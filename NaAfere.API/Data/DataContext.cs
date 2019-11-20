@@ -49,12 +49,12 @@ namespace NaAfere.API.Data
                 message.HasOne(u => u.Sender)
                 .WithMany(m => m.MessageSent)
                 .HasForeignKey(u => u.SenderId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Restrict);
             
                 message.HasOne(u => u.Recipient)
                 .WithMany(m => m.MessageReceived)
                 .HasForeignKey(u => u.RecipientId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Restrict);
             });
 
              builder.Entity<Friendship>(friendship => {

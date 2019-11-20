@@ -53,6 +53,9 @@ namespace NaAfere.API.Helpers
                 {
                     opt.MapFrom(src => src.Photo.Url);
                 });
+
+            CreateMap<MessageForCreationDto, Message>().ReverseMap();
+            CreateMap<Message, MessageToReturnDto>();
         }
     }
 }

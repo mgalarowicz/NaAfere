@@ -6,6 +6,7 @@ namespace NaAfere.API.Repositories
     {
         IUserRepository User { get; }
         ILocationRepository Location { get; }
+        IMessageRepository Message { get; }
         Task<bool> SaveAll();
 
     }

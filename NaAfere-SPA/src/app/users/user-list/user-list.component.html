@@ -5,29 +5,30 @@
 
 <div class="container">
     <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
+
         <div class="form-group">
           <label for="minAge">Age From</label>
-          <input type="number" class="form-control ml-1" style="width: 70px"
+          <input type="number" class="form-control ml-1" style="width: 100px"
           [(ngModel)]="userParams.minAge" id="minAge" name="minAge">
         </div>
       
-        <div class="form-group px-2">
+        <div class="form-group">
           <label for="maxAge">Age To</label>
-          <input type="number" class="form-control ml-1" style="width: 70px" 
+          <input type="number" class="form-control ml-1" style="width: 100px" 
           [(ngModel)]="userParams.maxAge" id="maxAge" name="maxAge">
         </div>
       
-        <div class="form-group px-2">
+        <div class="form-group">
           <label for="city">City: </label>
-          <select class="form-control ml-1" style="width: 130px" 
+          <select class="form-control ml-1" style="width: 160px; height: 40px;" 
           [(ngModel)]="userParams.city" id="city" name="city">
             <option *ngFor="let city of cityList" [value]="city.value">
               {{city.display}}
             </option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply</button>
-        <button type="button" class="btn btn-secondary" (click)="resetFilters()" style="margin-left:10px">Reset</button>
+        <button type="submit" class="btn btn-primary py-2" style="margin-left:10px;">Apply</button>
+        <button type="button" class="btn btn-secondary py-2" (click)="resetFilters()" style="margin-left:10px">Reset</button>
       
       </form>
       <br>
@@ -40,7 +41,8 @@
 					<thead>
 						<tr>
 							<th><span>User</span></th>
-							<th class="text-center"><span>Gender</span></th>
+              <th class="text-center"><span>Gender</span></th>
+              <th class="text-center"><span>City</span></th>
 							<th class="text-center"><span>Status</span></th>
 							<th class="text-center"><span>Email</span></th>
 							<th>&nbsp;</th>
@@ -55,6 +57,9 @@
                   </td>
                   <td class="text-center">
                     {{user.gender}}
+                  </td>
+                  <td class="text-center">
+                      {{user.city}}
                   </td>
                   <td class="text-center">
                     <span class="label label-default">Active</span>
