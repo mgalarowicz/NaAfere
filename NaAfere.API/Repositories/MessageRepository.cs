@@ -47,9 +47,17 @@ namespace NaAfere.API.Repositories
 
         }
 
-        public Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId)
+        public async Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId)
         {
-            throw new NotImplementedException();
+            var messages = await FindAll()
+                .Include(u => u.Sender).ThenInclude(p => p.Photo)
+                .Include(u => u.Recipient).ThenInclude(p => p.Photo)
+                .Where(m => m.RecipientId == recipientId && m.SenderId == userId 
+                        || m.RecipientId == userId && m.SenderId == recipientId)
+                .OrderByDescending(m => m.SendDate)
+                .ToListAsync();
+
+            return messages;
         }
     }
 }

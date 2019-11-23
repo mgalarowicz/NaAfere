@@ -16,6 +16,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,7 +26,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: 'games', component: GamesComponent},
-      {path: 'message', component: MessageComponent},
+      {path: 'message', component: MessageComponent, resolve: {messages: MessagesResolver}},
       {path: 'teams', component: TeamsComponent},
       {path: 'locations', component: LocationListComponent, resolve: {locations: LocationListResolver}},
       {path: 'locations/:id', component: LocationDetailComponent, resolve: {location: LocationDetailResolver}},

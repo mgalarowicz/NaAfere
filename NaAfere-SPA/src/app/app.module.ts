@@ -32,6 +32,7 @@ import { UserListResolver } from './_resolvers/user-list.resolver';
 import { UserService } from './_services/user.service';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 
 
 export function tokenGetter() {
@@ -85,7 +86,8 @@ export function tokenGetter() {
       LocationService,
       UserListResolver,
       UserService,
-      UserDetailResolver
+      UserDetailResolver,
+      MessagesResolver
    ],
    bootstrap: [
       AppComponent
