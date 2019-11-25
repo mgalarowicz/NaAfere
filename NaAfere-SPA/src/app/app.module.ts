@@ -6,6 +6,7 @@ import { BsDropdownModule, BsDatepickerModule, PaginationModule } from 'ngx-boot
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { UserService } from './_services/user.service';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
+import { UserMessagesComponent } from './users/user-messages/user-messages.component';
 
 
 export function tokenGetter() {
@@ -56,7 +58,9 @@ export function tokenGetter() {
       MystatsComponent,
       HomeComponent,
       UserListComponent,
-      UserDetailComponent
+      UserDetailComponent,
+      TimeAgoPipe,
+      UserMessagesComponent
    ],
    imports: [
       BrowserModule,
